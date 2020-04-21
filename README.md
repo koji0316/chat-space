@@ -7,38 +7,38 @@
 |email|string|null: false, unique: true|
 |password|string|null: false|
 ### Association
-- has_many :chatgroups, through: :users_chatgroups
+- has_many :groups, through: :users_groups
 - has_many :messages
-- has_many :users_chatgroups
+- has_many :users_groups
 
-## chatgroupsテーブル
+## groupsテーブル
 |Column|Type|Options|
 |------|----|-------|
 |name|string|null: false|
 ### Association
-- has_many :user, through: :users_chatgroups
+- has_many :user, through: :users_groups
 - has_many :messages
-- has_many :users_chatgroups
+- has_many :users_groups
 
 ## messagesテーブル
 |Column|Type|Options|
 |------|----|-------|
 |body|text||
 |image|text||
-|chatgroup|references|null: false, foreign_key: true|
+|group|references|null: false, foreign_key: true|
 |user|references|null: false, foreign_key: true|
 ### Association
 - belongs_to :user
-- belongs_to :chatgroup
+- belongs_to :group
 
-## users_chatgroupsテーブル
+## users_groupsテーブル
 |Column|Type|Options|
 |------|----|-------|
 |user|references|null: false, foreign_key: true|
-|chatgroup|references|null: false, foreign_key: true|
+|group|references|null: false, foreign_key: true|
 ### Association
 - belongs_to :user
-- belongs_to :chatgroup
+- belongs_to :group
 
 This README would normally document whatever steps are necessary to get the
 application up and running.
