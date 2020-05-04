@@ -1,23 +1,29 @@
 .chat-main
   .chat-mainheader
     .chat-header
-      %h2.chat-header__user-name koji
+      %h2.chat-header__user-name 
+        = @group.name
       %ul.chat-header__member
         Member：
-        %li.chat-header__member-name koji
-        %li.chat-header__member-name kiki
+        - @group.users.each do |user|
+          %li.chat-header__member-name #{user.name}
+        
     .chat-header__btn
-      = link_to 'http://google.com' do
+      = link_to edit_group_path(@group) do
         Edit
   .chat-list
     .chat-list__list-box
-      %p.chat-list__list-box__user-name koji
-      %p.chat-list__list-box__date 2020/04/27(Mon) 00:00:00
-    %p.chat-list__message こんにちは！
+      .messages
+        = render @messages
+    -#   %p.chat-list__list-box__user-name koji
+    -#   %p.chat-list__list-box__date 2020/04/27(Mon) 00:00:00
+    -# %p.chat-list__message こんにちは！
   .chat-form
     .message-form
-      %input.input-text{name: "message", placeholder: "type a message", type: "text", value: ""}
-      %label{class: "message-form__image"}
-        = icon('fas', 'image')
-        %input.input-file{type: "file"}
-    %input.submit-btn{name: "send", type: "submit", value: "Send", class: "chat-form__btn"}
+      = form_for [@group, @message] do |f|
+        = f.text_field :content, class: 'input-text', placeholder: 'type a message'
+        .form__image
+          = f.label :image, class: 'message-form__image' do
+            = icon('fas', 'image', class: 'icon')
+            = f.file_field :image, class: 'hidden'
+        = f.submit 'Send', class: 'chat-form__btn'
