@@ -39,6 +39,10 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
   gem 'rails-controller-testing'
+  gem 'faker'
+  gem 'rspec-rails', '~> 3.5'
+  gem 'factory_bot_rails'
+  gem 'pry-rails'
 end
 
 group :development do
@@ -58,18 +62,11 @@ gem 'font-awesome-sass'
 
 gem 'devise'
 
-gem 'pry-rails'
+
 
 gem 'carrierwave'
 gem 'mini_magick'
 
-gem 'rspec-rails', '~> 3.5'
-gem 'factory_bot_rails'
-
 group :development do
   gem 'web-console'
-end
-
-group :test do
-  gem 'faker'
 end
