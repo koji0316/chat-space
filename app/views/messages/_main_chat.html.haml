@@ -11,13 +11,8 @@
     .chat-header__btn
       = link_to edit_group_path(@group) do
         Edit
-  -# .chat-list
-  -#   .chat-list__list-box
   .messages
     = render @messages
-    -#   %p.chat-list__list-box__user-name koji
-    -#   %p.chat-list__list-box__date 2020/04/27(Mon) 00:00:00
-    -# %p.chat-list__message こんにちは！
   .chat-form
     .message-form
       = form_for [@group, @message] do |f|
