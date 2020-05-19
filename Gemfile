@@ -44,6 +44,11 @@ group :development, :test do
   gem 'factory_bot_rails'
   gem 'pry-rails'
   gem "jquery-rails"
+  gem 'capistrano'
+  gem 'capistrano-rbenv'
+  gem 'capistrano-bundler'
+  gem 'capistrano-rails'
+  gem 'capistrano-unicorn'
 end
 
 group :development do
